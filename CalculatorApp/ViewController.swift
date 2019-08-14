@@ -10,6 +10,7 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    // 計算結果を表示するラベル
     @IBOutlet weak var resultLabel: UILabel!
     
     /// 画面上の数字
@@ -69,15 +70,8 @@ class ViewController: UIViewController {
         if sender.tag == 10 { // Cが押されたとき
             // クリアする
             allClear()
-            //                resultCalculate.text = ""
-            //                result = 0
-            //                previousNumber = 0
-            //                numberOnScreen = 0
-            //                operation = 0
-            //                inValue = false
-            //                editLabel = true
-            //                performingMath = false
-        } else if inValue && sender.tag == 15  {// = が押された時
+        } else if inValue && sender.tag == 15  {
+            // = が押された時
             // 演算子を判定して、演算を実行
             switch operation {
             case 11:
@@ -99,14 +93,14 @@ class ViewController: UIViewController {
             let shosu: [String] = String(result).components(separatedBy: ".")
             
             if result.isInfinite {
-                resultCalculate.text = "エラー"
+                resultLabel.text = "エラー"
                 allClear()
             } else if shosu[1] == "0" {
                 // 小数点以下が0であるなら
-                resultCalculate.text = String(Int(result))
+                resultLabel.text = String(Int(result))
                 inValue = true
             }else { // 小数点以下が0でない
-                resultCalculate.text = String(result)
+                resultLabel.text = String(result)
                 inValue = true
             }
             
@@ -115,18 +109,18 @@ class ViewController: UIViewController {
         } else { // +,-,×,÷のいずれかが押されたとき
             // 画面に表示されている数字を変数に代入
             if inValue {
-                previousNumber = Double(resultCalculate.text!)!
+                previousNumber = Double(resultLabel.text!)!
                 print(previousNumber)
             }
             switch sender.tag {
             case 11:
-                resultCalculate.text = "÷"
+                resultLabel.text = "÷"
             case 12:
-                resultCalculate.text = "×"
+                resultLabel.text = "×"
             case 13:
-                resultCalculate.text = "+"
+                resultLabel.text = "+"
             case 14:
-                resultCalculate.text = "-"
+                resultLabel.text = "-"
             default:
                 break
             }
@@ -137,7 +131,6 @@ class ViewController: UIViewController {
             performingMath = true
         }
     }
-        
-    }
 }
+
 
