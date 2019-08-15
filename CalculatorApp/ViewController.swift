@@ -95,7 +95,7 @@ class ViewController: UIViewController {
             if result.isInfinite {
                 resultLabel.text = "エラー"
                 allClear()
-            } else if shosu[1] == "0" {
+            } else if shosu.last == "0" {
                 // 小数点以下が0であるなら
                 resultLabel.text = String(Int(result))
                 inValue = true
