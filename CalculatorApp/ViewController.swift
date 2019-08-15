@@ -47,6 +47,7 @@ class ViewController: UIViewController {
         performingMath = false
     }
     
+    // 数字ボタンを押した時のアクション
     @IBAction func numberButtons(_ sender: UIButton) {
         
         if editLabel {
@@ -63,7 +64,6 @@ class ViewController: UIViewController {
     }
     
     @IBAction func actionsButton(_ sender: UIButton) {
-        
         
         // ラベルを書き換える
         editLabel = true
@@ -89,7 +89,7 @@ class ViewController: UIViewController {
             default:
                 break
             }
-            // 小数点で値を分離
+            // 少数点で値を分離
             let shosu: [String] = String(result).components(separatedBy: ".")
             
             if result.isInfinite {
